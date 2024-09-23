@@ -1,0 +1,72 @@
+<template>
+    <NuxtLayout class="h-screen w-screen overflow-hidden flex flex-col">
+        <NuxtPage />
+    </NuxtLayout>
+</template>
+
+<style lang="css">
+body {
+    overflow: hidden;
+}
+
+button,
+.button {
+    @apply bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 min-w-32;
+}
+
+.redbutton {
+    @apply bg-red-500 hover:bg-red-600;
+}
+
+.button-secondary {
+    @apply bg-white hover:bg-gray-100 text-gray-500;
+}
+
+textarea {
+    @apply font-mono border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm;
+}
+
+input {
+    @apply border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm;
+}
+
+.notificationtoast {
+    background-color: black;
+    color: #e8e8e8;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
+    height: 48px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+    font-weight: 700;
+    box-sizing: content-box;
+    z-index: 110;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+}
+</style>
