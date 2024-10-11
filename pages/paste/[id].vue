@@ -19,11 +19,12 @@ import type { PasteType } from '~/components/Types';
 const route = useRoute()
 const externalid = ref(route.params.id)
 
-const { data, status, error, refresh, clear } = await useFetch('/api/pasteget', {
-    query: { id: externalid.value }
+const { data: paste, status, error } = useFetch<Partial<PasteType>>('/api/pasteget', {
+    query: { id: externalid.value },
+    default: () => ({ }),
+    lazy: true,
 })
 
-const paste = ref<PasteType>(data as unknown as PasteType)
 
 async function copyText(text: string, message: string) {
     if (!text) {

@@ -9,4 +9,9 @@ export default defineNuxtConfig({
             mode: 'out-in',
         },
     },
+    routeRules: {
+        "/hello": {
+
+        }
+    }
 })

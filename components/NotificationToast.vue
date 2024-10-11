@@ -11,15 +11,12 @@ import type { CSSProperties } from 'vue';
 import { EVENTKEY_NOTIFICATION, type Notification } from './Notify';
 import { EventBus } from './EventBus';
 
-
 const message = ref("")
 const visible = ref(false)
 
 watchEffect(() => {
     if (visible.value) {
-        const timer = setTimeout(() => {
-            visible.value = false
-        }, 2500)
+        const timer = setTimeout(() => visible.value = false, 2500)
     }
 })
 
@@ -27,10 +24,8 @@ const listener = (notification: Notification) => {
     message.value = notification.message
     visible.value = true
 }
-EventBus.instance.on(EVENTKEY_NOTIFICATION, listener);
-onUnmounted(() => {
-    EventBus.instance.off(EVENTKEY_NOTIFICATION, listener);
-}) 
+onMounted(() => EventBus.instance.on(EVENTKEY_NOTIFICATION, listener))
+onUnmounted(() => EventBus.instance.off(EVENTKEY_NOTIFICATION, listener))
 
 const style = computed(() => {
     const css: CSSProperties = {
